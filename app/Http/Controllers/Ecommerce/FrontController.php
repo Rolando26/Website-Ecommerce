@@ -85,12 +85,8 @@ class FrontController extends Controller
 
     public function listCommission()
     {
-        $user = auth()->guard('customer')->user(); //AMBIL DATA USER YANG LOGIN
-        //QUERY BERDASARKAN ID USER DARI DATA REF YANG ADA DIORDER DENGAN STATUS 4 ATAU SELESAI
+        $user = auth()->guard('customer')->user();
         $orders = Order::where('ref', $user->id)->where('status', 4)->paginate(10);
-        //LOAD VIEW AFFILIATE.BLADE.PHP DAN PASSING DATA ORDERS
         return view('ecommerce.affiliate', compact('orders'));
     }
-
-
 }

@@ -40,7 +40,13 @@
 							</li>
 							<li>
 								<a href="#">
-                  <span>Total</span> : Rp {{ number_format($order->subtotal) }}</a>
+									<span>Ongkos Kirim</span> : Rp {{ number_format($order->cost) }}
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span>Total</span> : Rp {{ number_format($order->total) }}
+								</a>
 							</li>
 						</ul>
 					</div>

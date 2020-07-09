@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
-    protected $appends = ['status_label', 'ref_status_label', 'commission'];
+    protected $appends = ['status_label', 'ref_status_label', 'commission', 'total'];
     
     //MEMBUAT RELASI KE MODEL DISTRICT.PHP
     public function district()
@@ -49,6 +49,11 @@ class Order extends Model
         return $this->hasOne(OrderReturn::class);
     }
 
+    public function getTotalAttribute()
+    {
+        return $this->subtotal + $this->cost;
+    }
+
     public function getRefStatusLabelAttribute()
     {
         if ($this->ref_status == 0) {
@@ -56,7 +61,7 @@ class Order extends Model
         }
         return '<span class="badge badge-success">Dicairkan</span>';
     }
-    
+
     public function getCommissionAttribute()
     {
         //KOMISINYA ADALAH 10% DARI SUBTOTAL
@@ -64,7 +69,4 @@ class Order extends Model
         //TAPI JIKA LEBIH DARI 10.000 MAKA YANG DIKEMBALIKAN ADALAH 10.000
         return $commission > 10000 ? 10000:$commission;
     }
-
-
-
 }

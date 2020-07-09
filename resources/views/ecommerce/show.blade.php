@@ -45,7 +45,6 @@
                                     <span>Kategori</span> : {{ $product->category->name }}</a>
 							</li>
 						</ul>
-						<!-- <p> </p> -->
 						<p>
 							@if (auth()->guard('customer')->check())
 							<label>Afiliasi Link</label>
@@ -53,7 +52,7 @@
 								value="{{ url('/product/ref/' . auth()->guard('customer')->user()->id . '/' . $product->id) }}" 
 								readonly class="form-control">
 							@endif
-							</p>
+						</p>
 						<form action="{{ route('front.cart') }}" method="POST">
                         @csrf
                             <div class="product_count">

@@ -2,9 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-
-    // ROUTE FRONT END
 Route::get('/', 'Ecommerce\FrontController@index')->name('front.index');
 Route::get('/product', 'Ecommerce\FrontController@product')->name('front.product');
 Route::get('/product/{slug}', 'Ecommerce\FrontController@show')->name('front.show_product');
@@ -19,15 +27,12 @@ Route::get('/product/ref/{user}/{product}', 'Ecommerce\FrontController@referalPr
 
 Auth::routes();
 
-    // PREFIX ADMINISTRATOR
 Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('category', 'CategoryController')->except(['create', 'show']);
     Route::resource('product', 'ProductController')->except(['show']);
     Route::get('/product/bulk', 'ProductController@massUploadForm')->name('product.bulk');
     Route::post('/product/bulk', 'ProductController@massUpload')->name('product.saveBulk');
-
-    //PREFIX ORDERS DALAM ADMINSITRATOR
     Route::group(['prefix' => 'orders'], function() {
         Route::get('/', 'OrderController@index')->name('orders.index');
         Route::delete('/{id}', 'OrderController@destroy')->name('orders.destroy');
@@ -36,28 +41,22 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
         Route::post('/shipping', 'OrderController@shippingOrder')->name('orders.shipping');
         Route::get('/return/{invoice}', 'OrderController@return')->name('orders.return');
         Route::post('/return', 'OrderController@approveReturn')->name('orders.approve_return');
-        
+        //SEMUA ROUTE BARU SEPANJANG ARTIKEL INI AKAN DISIMPAN DI DALAM BLOCK CODE INI
     });
-
-    //PREFIX REPORTS DALAM ADMINISTRATOR
     Route::group(['prefix' => 'reports'], function() {
         Route::get('/order', 'HomeController@orderReport')->name('report.order');
         Route::get('/order/pdf/{daterange}', 'HomeController@orderReportPdf')->name('report.order_pdf');
         Route::get('/return', 'HomeController@returnReport')->name('report.return');
         Route::get('/return/pdf/{daterange}', 'HomeController@returnReportPdf')->name('report.return_pdf');
-        
+        // [.. ROUTING LAINNYA ..]
     });
-
-
 });
 
-    // PREFIX MEMBER
 Route::group(['prefix' => 'member', 'namespace' => 'Ecommerce'], function() {
     Route::post('login', 'LoginController@login')->name('customer.post_login');
     Route::get('login', 'LoginController@loginForm')->name('customer.login');
     Route::get('verify/{token}', 'FrontController@verifyCustomerRegistration')->name('customer.verify');
 
-    // PREFIX CUSTOMER DALLAM MEMBER
     Route::group(['middleware' => 'customer'], function() {
         Route::get('dashboard', 'LoginController@dashboard')->name('customer.dashboard');
         Route::get('logout', 'LoginController@logout')->name('customer.logout');
