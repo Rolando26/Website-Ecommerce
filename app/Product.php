@@ -19,7 +19,7 @@ class Product extends Model
         if ($this->status == 0) {
             return '<span class="badge badge-secondary">Draft</span>';
         }
-        return '<span class="badge badge-success">Aktif</span>';
+        return '<span class="badge badge-success">Publish</span>';
     }
     public function category()
     {
