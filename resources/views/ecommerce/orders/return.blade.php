@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Return {{ $order->invoice }} - DW Ecommerce</title>
+    <title>Return {{ $order->invoice }} </title>
 @endsection
 
 @section('content')

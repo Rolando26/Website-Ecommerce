@@ -72,11 +72,13 @@
                                 <i class="lnr lnr-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="card_area">
-                                
-                                <!-- UBAH JADI BUTTON -->
+                            <div class="card_area">           
+                              
                                 <button class="main_btn">Add to Cart</button>
-                                <!-- UBAH JADI BUTTON -->
+								@if (session('success'))
+								<div class="alert alert-success mt-2">{{ session('success') }}</div>
+								@endif
+							<!-- UBAH JADI BUTTON -->
                                 
                             </div>
                         </form>

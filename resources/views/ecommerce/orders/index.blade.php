@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>List Pesanan - DW Ecommerce</title>
+    <title>List Pesanan</title>
 @endsection
 
 @section('content')
@@ -66,7 +66,7 @@
                                 </td>
                                   <td>{{ $row->customer_name }}</td>
                                   <td>{{ $row->customer_phone }}</td>
-                                  <td>{{ number_format($row->subtotal) }}</td>
+                                  <td>{{ number_format($row->total) }}</td>
                                   <td>{!! $row->status_label !!}</td>
                                   <td>{{ $row->created_at }}</td>
                                   <td>

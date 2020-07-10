@@ -8,6 +8,7 @@ use App\Category;
 use Illuminate\Support\Str;
 use File;
 use App\Jobs\ProductJob;
+use App\Jobs\MarketplaceJob;
 
 class ProductController extends Controller
 {
@@ -128,4 +129,21 @@ class ProductController extends Controller
         ]);
         return redirect(route('product.index'))->with(['success' => 'Data Produk Diperbaharui']);
     }
+
+    public function uploadViaMarketplace(Request $request)
+        {
+            //VALIDASI INPUTAN 
+            $this->validate($request, [
+                'marketplace' => 'required|string',
+                'username' => 'required|string'
+            ]);
+
+            MarketplaceJob::dispatch($request->username, 10); //BUAT JOBS QUEUE
+            //PARAMETER PERTAMA ADALAH USERNAME TOKO PADA MARKETPLACE
+            //PARAMETER KEDUA ADALAH JUMLAH PRODUK YANG AKAN AMBIL DALAM SEKALI PROSES
+            //SAYA SARANKAN MENGGUNAKAN VALUE 10 UNTUK MEMPERCEPAT PROSES
+            return redirect()->back()->with(['success' => 'Produk Dalam Antrian']);
+        }
+
+
 }

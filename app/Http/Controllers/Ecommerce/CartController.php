@@ -16,6 +16,7 @@ use DB;
 use Cookie;
 use App\Mail\CustomerRegisterMail;
 use Mail;
+use GuzzleHttp\Client;
 
 class CartController extends Controller
 {
@@ -32,6 +33,7 @@ class CartController extends Controller
             'product_id' => 'required|exists:products,id',
             'qty' => 'required|integer'
         ]);
+    
         $carts = $this->getCarts();
         if ($carts && array_key_exists($request->product_id, $carts)) {
             $carts[$request->product_id]['qty'] += $request->qty;
@@ -42,13 +44,17 @@ class CartController extends Controller
                 'product_id' => $product->id,
                 'product_name' => $product->name,
                 'product_price' => $product->price,
-                'product_image' => $product->image
+                'product_image' => $product->image,
+                'weight' => $product->weight //TAMBAHKAN BERAT KE DALAM COOKIE
             ];
         }
+    
         $cookie = cookie('dw-carts', json_encode($carts), 2880);
-        return redirect('cart')->cookie($cookie);
+        //KITA JUGA MENAMBAHKAN FLASH MESSAGE UNTUK NOTIFIKASI PRODUK DIMASUKKAN KE KERANJANG
+        return redirect('cart')->with(['success' => 'Produk Ditambahkan ke Keranjang'])->cookie($cookie);
     }
 
+    
     public function listCart()
     {
         $carts = $this->getCarts();
@@ -79,8 +85,15 @@ class CartController extends Controller
         $subtotal = collect($carts)->sum(function($q) {
             return $q['qty'] * $q['product_price'];
         });
-        return view('ecommerce.checkout', compact('provinces', 'carts', 'subtotal'));
+        //TAMBAHKAN FUNGSI UNTUK MENGHITUNG BERAT BARANG
+        $weight = collect($carts)->sum(function($q) {
+            return $q['qty'] * $q['weight'];
+        });
+        //JANGAN LUPA PASSING KE VIEW
+        return view('ecommerce.checkout', compact('provinces', 'carts', 'subtotal', 'weight'));
     }
+
+    
 
     public function getCity()
     {
@@ -103,7 +116,8 @@ class CartController extends Controller
             'customer_address' => 'required|string',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
-            'district_id' => 'required|exists:districts,id'
+            'district_id' => 'required|exists:districts,id',
+            'courier' => 'required' 
         ]);
 
         DB::beginTransaction();
@@ -138,6 +152,7 @@ class CartController extends Controller
                 ]);
             }
 
+            $shipping = explode('-', $request->courier); //EXPLODE DATA KURIR, KARENA FORMATNYA, NAMAKURIR-SERVICE-COST
             $order = Order::create([
                 'invoice' => Str::random(4) . '-' . time(),
                 'customer_id' => $customer->id,
@@ -146,6 +161,8 @@ class CartController extends Controller
                 'customer_address' => $request->customer_address,
                 'district_id' => $request->district_id,
                 'subtotal' => $subtotal,
+                'cost' => $shipping[2], //SIMPAN INFORMASI BIAYA ONGKIRNYA PADA INDEX 2
+                'shipping' => $shipping[0] . '-' . $shipping[1], //SIMPAN NAMA KURIR DAN SERVICE YANG DIGUNAKAN
                 'ref' => $affiliate != '' && $explodeAffiliate[0] != auth()->guard('customer')->user()->id ? $affiliate:NULL
             ]);
             //CODE DIATAS MELAKUKAN PENGECEKAN JIKA USERID NYA BUKAN DIRINYA SENDIRI, MAKA AFILIASINYA DISIMPAN
@@ -183,4 +200,37 @@ class CartController extends Controller
         $order = Order::with(['district.city'])->where('invoice', $invoice)->first();
         return view('ecommerce.checkout_finish', compact('order'));
     }
+
+    public function getCourier(Request $request)
+    {
+        $this->validate($request, [
+            'destination' => 'required',
+            'weight' => 'required|integer'
+        ]);
+    
+        //MENGIRIM PERMINTAAN KE API RUANGAPI UNTUK MENGAMBIL DATA ONGKOS KIRIM
+       
+        $url = 'https://ruangapi.com/api/v1/shipping';
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+            'headers' => [
+                'Authorization' => 'Cq4xH44IIsxjJXe9ITAcRgKv2PKHG0vPYqHWpqp9'
+            ],
+            'form_params' => [
+                'origin' => 22, //ASAL PENGIRIMAN, 22 = BANDUNG
+                'destination' => $request->destination,
+                'weight' => $request->weight,
+                'courier' => 'jne,jnt' //MASUKKAN KEY KURIR LAINNYA JIKA INGIN MENDAPATKAN DATA ONGKIR DARI KURIR YANG LAIN
+            ]
+        ]);
+    
+        $body = json_decode($response->getBody(), true);
+        return $body;
+    }
+
+
+
+
+
+
 }

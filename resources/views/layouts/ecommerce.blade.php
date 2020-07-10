@@ -62,7 +62,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
                     <a class="navbar-brand logo_h" href="{{ url('/') }}">
-						<img src="https://daengweb.id/front/dw-theme/images/logo-head.png" alt="">
+					<img src="{{ asset('assets/img/logo.png') }}" style="height:70px; transform:translate(-10px,0px);">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					 aria-expanded="false" aria-label="Toggle navigation">
@@ -197,10 +197,9 @@
 				</div>
 			</div>
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
-				<p class="col-lg-12 footer-text text-center">
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
-                    All rights reserved | This template is made with 
-                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
+				<p class="col-lg-12 footer-text text-center"> 
+                    All rights reserved  <i class="fa fa-heart-o" aria-hidden="true"></i> |
+                     by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
 				</p>
 			</div>
 		</div>
