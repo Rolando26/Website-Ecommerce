@@ -122,11 +122,7 @@ class CartController extends Controller
 
         DB::beginTransaction();
         try {
-            //TAMBAHKAN DUA BARI CODE INI
-            //GET COOKIE DARI BROWSER
-            $affiliate = json_decode(request()->cookie('dw-afiliasi'), true);
-            //EXPLODE DATA COOKIE UNTUK MEMISAHKAN USERID DAN PRODUCTID
-            $explodeAffiliate = explode('-', $affiliate);
+          
 
             $customer = Customer::where('email', $request->email)->first();
             if (!auth()->guard('customer')->check() && $customer) {
@@ -163,8 +159,8 @@ class CartController extends Controller
                 'subtotal' => $subtotal,
                 'cost' => $shipping[2], //SIMPAN INFORMASI BIAYA ONGKIRNYA PADA INDEX 2
                 'shipping' => $shipping[0] . '-' . $shipping[1], //SIMPAN NAMA KURIR DAN SERVICE YANG DIGUNAKAN
-                'ref' => $affiliate != '' && $explodeAffiliate[0] != auth()->guard('customer')->user()->id ? $affiliate:NULL
-            ]);
+                
+                ]);
             //CODE DIATAS MELAKUKAN PENGECEKAN JIKA USERID NYA BUKAN DIRINYA SENDIRI, MAKA AFILIASINYA DISIMPAN
 
             foreach ($carts as $row) {
@@ -182,8 +178,7 @@ class CartController extends Controller
 
             $carts = [];
             $cookie = cookie('dw-carts', json_encode($carts), 2880);
-            //KEMUDIAN HAPUS DATA COOKIE AFILIASI
-            Cookie::queue(Cookie::forget('dw-afiliasi'));
+        
 
             if (!auth()->guard('customer')->check()) {
                 Mail::to($request->email)->send(new CustomerRegisterMail($customer, $password));
@@ -227,10 +222,6 @@ class CartController extends Controller
         $body = json_decode($response->getBody(), true);
         return $body;
     }
-
-
-
-
 
 
 }

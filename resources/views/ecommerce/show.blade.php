@@ -46,14 +46,7 @@
 							</li>
 						</ul>
 						<!-- <p> </p> -->
-						<p>
-							@if (auth()->guard('customer')->check())
-							<label>Afiliasi Link</label>
-							<input type="text" 
-								value="{{ url('/product/ref/' . auth()->guard('customer')->user()->id . '/' . $product->id) }}" 
-								readonly class="form-control">
-							@endif
-							</p>
+					
 						<form action="{{ route('front.cart') }}" method="POST">
                         @csrf
                             <div class="product_count">

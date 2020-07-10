@@ -15,7 +15,7 @@ Route::post('/cart/update', 'Ecommerce\CartController@updateCart')->name('front.
 Route::get('/checkout', 'Ecommerce\CartController@checkout')->name('front.checkout');
 Route::post('/checkout', 'Ecommerce\CartController@processCheckout')->name('front.store_checkout');
 Route::get('/checkout/{invoice}', 'Ecommerce\CartController@checkoutFinish')->name('front.finish_checkout');
-Route::get('/product/ref/{user}/{product}', 'Ecommerce\FrontController@referalProduct')->name('front.afiliasi');
+
 
 Auth::routes();
 
@@ -72,6 +72,6 @@ Route::group(['prefix' => 'member', 'namespace' => 'Ecommerce'], function() {
         Route::post('orders/accept', 'OrderController@acceptOrder')->name('customer.order_accept');
         Route::get('orders/return/{invoice}', 'OrderController@returnForm')->name('customer.order_return');
         Route::put('orders/return/{invoice}', 'OrderController@processReturn')->name('customer.return');
-        Route::get('/afiliasi', 'FrontController@listCommission')->name('customer.affiliate');
+    
     });
 });

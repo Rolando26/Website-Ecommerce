@@ -51,7 +51,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $order = Order::where('invoice', $request->invoice)->first();
-            if ($order->subtotal != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
+            if ($order->total != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
             if ($order->status == 0 && $request->hasFile('proof')) {
                 $file = $request->file('proof');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
@@ -174,7 +174,7 @@ class OrderController extends Controller
             //UNTUK MENDAPATKAN CHAT_ID
             $chat_id = $chat['result'][0]['message']['chat']['id'];
             //TEKS YANG DIINGINKAN
-            $text = 'Hai DaengWeb, OrderID ' . $order_id . ' Melakukan Permintaan Refund Dengan Alasan "'. $reason .'", Segera Dicek Ya!';
+            $text = 'Hai Admin, OrderID ' . $order_id . ' Melakukan Permintaan Refund Dengan Alasan "'. $reason .'", Segera Dicek Ya!';
         
             //DAN KIRIM REQUEST KE TELEGRAM UNTUK MENGIRIMKAN PESAN
             return $this->getTelegram('https://api.telegram.org/'. $key .'/sendMessage', '?chat_id=' . $chat_id . '&text=' . $text);

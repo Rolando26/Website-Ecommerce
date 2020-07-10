@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use Carbon\Carbon;
 use PDF;
+use App\Customer;
 class HomeController extends Controller
 {
     /**
@@ -25,7 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $orders = Order::where("status","4")->count();
+        $total = Order::sum("subtotal") + Order::sum("cost");
+        $jjk = Order:: where("status","3")->count();
+        $customers = Customer::all()->count();
+        return view('home', compact('orders','total','jjk','customers'));
     }
 
     public function orderReport()

@@ -22,30 +22,30 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="callout callout-info">
-                                        <small class="text-muted">Omset Harian</small>
+                                        <small class="text-muted">Omset</small>
                                         <br>
-                                        <strong class="h4">Rp 0</strong>
+                                        <strong class="h4">Rp {{ number_format ($total) }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-danger">
-                                        <small class="text-muted">Pelanggan Baru (H-7)</small>
+                                        <small class="text-muted">Jumlah Customer</small>
                                         <br>
-                                        <strong class="h4">0</strong>
+                                        <strong class="h4">{{ $customers }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-primary">
                                         <small class="text-muted">Perlu Dikirim</small>
                                         <br>
-                                        <strong class="h4">0</strong>
+                                        <strong class="h4">{{ $jjk }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="callout callout-success">
-                                        <small class="text-muted">Total Produk</small>
+                                        <small class="text-muted">Transaksi Selesai</small>
                                         <br>
-                                        <strong class="h4">0</strong>
+                                        <strong class="h4">{{ $orders }}</strong>
                                     </div>
                                 </div>
                             </div>
