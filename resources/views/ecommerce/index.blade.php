@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Pusat Belanja Online</title>
+    <title>DW Ecommerce - Pusat Belanja Online</title>
 @endsection
 
 @section('content')
@@ -12,48 +12,16 @@
 			<div class="container">
 				<div class="banner_content row">
 					<div class="offset-lg-2 col-lg-8">
-						<h3>Fashion for
-							<br />Upcoming Winter</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-							aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-						<a class="white_bg_btn" href="#">View Collection</a>
+						<h3>Mantou Adut</h3>
+						<p>Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.pemesanan yang Frozen bisa melalui smua ekspedisi yg tersedia</p>
+						<a class="white_bg_btn" href="{{ route('front.product') }}">Lihat Produk</a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 	<!--================End Home Banner Area =================-->
-
-	<!--================Hot Deals Area =================-->
-	<section class="hot_deals_area section_gap">
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-lg-6">
-					<div class="hot_deal_box">
-						<img class="img-fluid" src="{{ asset('ecommerce/img/product/hot_deals/deal1.jpg') }}" alt="">
-						<div class="content">
-							<h2>Hot Deals of this Month</h2>
-							<p>shop now</p>
-						</div>
-						<a class="hot_deal_link" href="#"></a>
-					</div>
-				</div>
-
-				<div class="col-lg-6">
-					<div class="hot_deal_box">
-						<img class="img-fluid" src="{{ asset('ecommerce/img/product/hot_deals/deal1.jpg') }}" alt="">
-						<div class="content">
-							<h2>Hot Deals of this Month</h2>
-							<p>shop now</p>
-						</div>
-						<a class="hot_deal_link" href="#"></a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Hot Deals Area =================-->
-
+	
 	<!--================Feature Product Area =================-->
 	<section class="feature_product_area section_gap">
 		<div class="main_box">
@@ -61,7 +29,7 @@
 				<div class="row">
 					<div class="main_title">
 						<h2>Produk Terbaru</h2>
-						<p>Tampil trending dengan kumpulan produk kekinian kami.</p>
+						<p>Menjual berbagai Roti dan Makanan - Makanan Beku Dengan Harga Terjangkau</p>
 					</div>
 				</div>
 				<div class="row">

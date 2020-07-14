@@ -174,7 +174,7 @@ class OrderController extends Controller
             //UNTUK MENDAPATKAN CHAT_ID
             $chat_id = $chat['result'][0]['message']['chat']['id'];
             //TEKS YANG DIINGINKAN
-            $text = 'Hai Admin, OrderID ' . $order_id . ' Melakukan Permintaan Refund Dengan Alasan "'. $reason .'", Segera Dicek Ya!';
+            $text = 'Hai DaengWeb, OrderID ' . $order_id . ' Melakukan Permintaan Refund Dengan Alasan "'. $reason .'", Segera Dicek Ya!';
         
             //DAN KIRIM REQUEST KE TELEGRAM UNTUK MENGIRIMKAN PESAN
             return $this->getTelegram('https://api.telegram.org/'. $key .'/sendMessage', '?chat_id=' . $chat_id . '&text=' . $text);

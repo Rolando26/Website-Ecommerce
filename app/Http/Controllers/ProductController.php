@@ -103,7 +103,6 @@ class ProductController extends Controller
             'category_id' => 'required|exists:categories,id',
             'price' => 'required|integer',
             'weight' => 'required|integer',
-            'status' => 'required|integer',
             'image' => 'nullable|image|mimes:png,jpeg,jpg' //IMAGE BISA NULLABLE
         ]);
     
@@ -124,26 +123,23 @@ class ProductController extends Controller
             'category_id' => $request->category_id,
             'price' => $request->price,
             'weight' => $request->weight,
-            'status' => $request->status,
             'image' => $filename
         ]);
         return redirect(route('product.index'))->with(['success' => 'Data Produk Diperbaharui']);
     }
 
     public function uploadViaMarketplace(Request $request)
-        {
-            //VALIDASI INPUTAN 
-            $this->validate($request, [
-                'marketplace' => 'required|string',
-                'username' => 'required|string'
-            ]);
+    {
+        //VALIDASI INPUTAN 
+        $this->validate($request, [
+            'marketplace' => 'required|string',
+            'username' => 'required|string'
+        ]);
 
-            MarketplaceJob::dispatch($request->username, 10); //BUAT JOBS QUEUE
-            //PARAMETER PERTAMA ADALAH USERNAME TOKO PADA MARKETPLACE
-            //PARAMETER KEDUA ADALAH JUMLAH PRODUK YANG AKAN AMBIL DALAM SEKALI PROSES
-            //SAYA SARANKAN MENGGUNAKAN VALUE 10 UNTUK MEMPERCEPAT PROSES
-            return redirect()->back()->with(['success' => 'Produk Dalam Antrian']);
-        }
-
-
+        MarketplaceJob::dispatch($request->username, 10); //BUAT JOBS QUEUE
+        //PARAMETER PERTAMA ADALAH USERNAME TOKO PADA MARKETPLACE
+        //PARAMETER KEDUA ADALAH JUMLAH PRODUK YANG AKAN AMBIL DALAM SEKALI PROSES
+        //SAYA SARANKAN MENGGUNAKAN VALUE 10 UNTUK MEMPERCEPAT PROSES
+        return redirect()->back()->with(['success' => 'Produk Dalam Antrian']);
+    }
 }

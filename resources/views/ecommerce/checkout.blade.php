@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Checkout</title>
+    <title>Checkout - Dw Ecommerce</title>
 @endsection
 
 @section('content')
@@ -94,8 +94,6 @@
                             </select>
                             <p class="text-danger">{{ $errors->first('district_id') }}</p>
                         </div>
-
-
                         <div class="col-md-12 form-group p_star">
                             <label for="">Kurir</label>
                             <input type="hidden" name="weight" id="weight" value="{{ $weight }}">
@@ -104,7 +102,6 @@
                             </select>
                             <p class="text-danger">{{ $errors->first('courier') }}</p>
                         </div>
-                        
                 <!-- ADAPUN DATA KOTA DAN KECAMATAN AKAN DI RENDER SETELAH PROVINSI DIPILIH -->
                     
 					</div>
@@ -126,7 +123,7 @@
                 </li>
                 @endforeach
 							</ul>
-                            <ul class="list list_2">
+							<ul class="list list_2">
                                 <li>
                                     <a href="#">Subtotal
                                     <span>Rp {{ number_format($subtotal) }}</span>
@@ -193,9 +190,7 @@
             });
         })
 
-
-            //JIKA KECAMATAN DIPILIH
-            $('#district_id').on('change', function() {
+        $('#district_id').on('change', function() {
                 //MEMBUAT EFEK LOADING SELAMA PROSES REQUEST BERLANGSUNG
                 $('#courier').empty()
                 $('#courier').append('<option value="">Loading...</option>')
@@ -232,9 +227,5 @@
                 let total = parseInt(subtotal) + parseInt(split['2'])
                 $('#total').text('Rp' + total)
             })
-
-
     </script>
-
-    
-     @endsection
+    @endsection

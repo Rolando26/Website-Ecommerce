@@ -37,7 +37,7 @@ class MarketplaceJob implements ShouldQueue
         //HIT API YANG SUDAH DISEDIAKAN OLEH RUANGAPI
         $response = $client->request('POST', $url, [
             'headers' => [
-                'Authorization' => 'MASUKKAN API KEY ANDA DISINI'
+                'Authorization' => 'LCVuhHNnSGUF8D10m2dBephXDA2S6DOR5xWz7b7v'
             ],
             //DENGAN MENGIRIMKAN PARAMETER YANG DIMINTA
             'form_params' => [

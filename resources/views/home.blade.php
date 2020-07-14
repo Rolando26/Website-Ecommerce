@@ -24,7 +24,7 @@
                                     <div class="callout callout-info">
                                         <small class="text-muted">Omset</small>
                                         <br>
-                                        <strong class="h4">Rp {{ number_format ($total) }}</strong>
+                                        <strong class="h4">Rp {{ number_format($total) }}</strong>
                                     </div>
                                 </div>
                                 <div class="col-md-3">
@@ -42,7 +42,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="callout callout-success">
+                                    <div class="callout callout-primary">
                                         <small class="text-muted">Transaksi Selesai</small>
                                         <br>
                                         <strong class="h4">{{ $orders }}</strong>

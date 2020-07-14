@@ -45,8 +45,7 @@
                                     <span>Kategori</span> : {{ $product->category->name }}</a>
 							</li>
 						</ul>
-						<!-- <p> </p> -->
-					
+						<p></p>
 						<form action="{{ route('front.cart') }}" method="POST">
                         @csrf
                             <div class="product_count">
@@ -65,13 +64,11 @@
                                 <i class="lnr lnr-chevron-down"></i>
                                 </button>
                             </div>
-                            <div class="card_area">           
-                              
+                            <div class="card_area">
+                                
+                                <!-- UBAH JADI BUTTON -->
                                 <button class="main_btn">Add to Cart</button>
-								@if (session('success'))
-								<div class="alert alert-success mt-2">{{ session('success') }}</div>
-								@endif
-							<!-- UBAH JADI BUTTON -->
+                                <!-- UBAH JADI BUTTON -->
                                 
                             </div>
                         </form>

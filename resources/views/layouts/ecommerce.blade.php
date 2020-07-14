@@ -42,7 +42,7 @@
 		<div class="top_menu row m0">
 			<div class="container-fluid">
 				<div class="float-left">
-					<p>Call Us:</p>
+					<p>Call Us: 012 44 5698 7456 896</p>
 				</div>
 				<div class="float-right">
 				<ul class="right_side">
@@ -52,7 +52,7 @@
 						<li><a href="{{ route('customer.login') }}">Login</a></li>
 					@endif
 					<li><a href="{{ route('customer.dashboard') }}">My Account</a></li>
-					<li><a href="contact.html">Contact Us</a></li>
+					<li><a href="https://api.whatsapp.com/send?phone=6281282498758&text=Hallo%20Saya%20Ingin%20....">Contact Us</a></li>
 				</ul>
 				</div>
 			</div>
@@ -62,7 +62,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
                     <a class="navbar-brand logo_h" href="{{ url('/') }}">
-					<img src="{{ asset('assets/img/logo.png') }}" style="height:70px; transform:translate(-10px,0px);">
+						<img src="https://daengweb.id/front/dw-theme/images/logo-head.png" alt="">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					 aria-expanded="false" aria-label="Toggle navigation">
@@ -87,14 +87,8 @@
 									</li>
 									<hr>
 									<li class="nav-item">
-										<a href="#" class="icons">
+										<a href="{{ route('customer.dashboard') }}" class="icons">
 											<i class="fa fa-user" aria-hidden="true"></i>
-										</a>
-									</li>
-									<hr>
-									<li class="nav-item">
-										<a href="#" class="icons">
-											<i class="fa fa-heart-o" aria-hidden="true"></i>
 										</a>
 									</li>
 									<hr>
@@ -119,10 +113,10 @@
 	<footer class="footer-area section_gap">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-3  col-md-6 col-sm-6">
+				<div class="col-lg-5  col-md-4 col-sm-4">
 					<div class="single-footer-widget">
 						<h6 class="footer_title">About Us</h6>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore magna aliqua.</p>
+						Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.<br>pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.<br>pemesanan yang Frozen bisa melalui smua ekspedisi yg tersedia
 					</div>
 				</div>
 				<div class="col-lg-4 col-md-6 col-sm-6">
@@ -145,37 +139,6 @@
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
-					<div class="single-footer-widget instafeed">
-						<h6 class="footer_title">Instagram Feed</h6>
-						<ul class="list instafeed d-flex flex-wrap">
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-01.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-02.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-03.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-04.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-05.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-06.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-07.jpg') }}" alt="">
-							</li>
-							<li>
-								<img src="{{ asset('ecommerce/img/instagram/Image-08.jpg') }}" alt="">
-							</li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-6 col-sm-6">
 					<div class="single-footer-widget f_social_wd">
 						<h6 class="footer_title">Follow Us</h6>
 						<p>Let us be social</p>
@@ -197,9 +160,10 @@
 				</div>
 			</div>
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
-				<p class="col-lg-12 footer-text text-center"> 
-                    All rights reserved  <i class="fa fa-heart-o" aria-hidden="true"></i> |
-                     by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
+				<p class="col-lg-12 footer-text text-center">
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                    All rights reserved | This template is made with 
+                    <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
 				</p>
 			</div>
 		</div>

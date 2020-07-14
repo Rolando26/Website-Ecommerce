@@ -8,7 +8,6 @@ use App\Product;
 use App\Category;
 use App\Customer;
 use App\Province;
-use App\Order;
 
 class FrontController extends Controller
 {
@@ -28,6 +27,12 @@ class FrontController extends Controller
     {
         $products = Category::where('slug', $slug)->first()->product()->orderBy('created_at', 'DESC')->paginate(12);
         return view('ecommerce.product', compact('products'));
+    }
+
+    public function Menu($slug)
+    {
+        $products = Category::where('slug', $slug)->first()->product()->orderBy('created_at', 'DESC')->paginate(12);
+        return view('layout.ecommerce.module.menu', compact('products'));
     }
 
     public function show($slug)
@@ -73,16 +78,4 @@ class FrontController extends Controller
         $user->update($data);
         return redirect()->back()->with(['success' => 'Profil berhasil diperbaharui']);
     }
-
- 
-    public function listCommission()
-    {
-        $user = auth()->guard('customer')->user(); //AMBIL DATA USER YANG LOGIN
-        //QUERY BERDASARKAN ID USER DARI DATA REF YANG ADA DIORDER DENGAN STATUS 4 ATAU SELESAI
-        $orders = Order::where('ref', $user->id)->where('status', 4)->paginate(10);
-        //LOAD VIEW AFFILIATE.BLADE.PHP DAN PASSING DATA ORDERS
-        return view('ecommerce.affiliate', compact('orders'));
-    }
-
-
 }

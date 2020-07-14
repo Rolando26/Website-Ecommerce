@@ -87,7 +87,7 @@
             let end = moment().endOf('month')
 
             $('#exportpdf').attr('href', '/administrator/reports/return/pdf/' + start.format('YYYY-MM-DD') + '+' + end.format('YYYY-MM-DD'))
-            
+
             $('#created_at').daterangepicker({
                 startDate: start,
                 endDate: end

@@ -49,13 +49,8 @@ class Order extends Model
         return $this->hasOne(OrderReturn::class);
     }
 
-    
-  
-
     public function getTotalAttribute()
-     {
-         return $this->subtotal + $this->cost;
-     }
-
-
+    {
+        return $this->subtotal + $this->cost;
+    }
 }
