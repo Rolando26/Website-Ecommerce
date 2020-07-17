@@ -114,7 +114,7 @@ a {
   width: 100% !important; }
 
 .section_gap {
-  padding: 120px 0px; }
+  padding: 50px 0px; }
   @media (max-width: 1224px) {
     .section_gap {
       padding: 60px 0px; } }
@@ -413,10 +413,10 @@ a {
 /* Home Banner Area css
 ============================================================================================ */
 .home_banner_area {
-  background: url(../img/banner/banner-bg.jpg) no-repeat center bottom;
+  background: url(../img/banner/bamboo-bamboo-whisk-board-bowls-461428.jpg) no-repeat center bottom;
   position: relative;
   z-index: 1;
-  min-height: 900px; }
+  min-height: 700px; }
   .home_banner_area .overlay {
     background: rgba(0, 0, 0, 0.33);
     position: absolute;
@@ -429,7 +429,7 @@ a {
   .home_banner_area .banner_inner {
     position: relative;
     width: 100%;
-    min-height: 900px; }
+    min-height: 700px; }
     .home_banner_area .banner_inner .banner_content {
       color: #222222;
       padding-top: 110px;
@@ -507,13 +507,13 @@ a {
 .banner_area {
   position: relative;
   z-index: 1;
-  min-height: 395px; }
+  min-height: 320px; }
   .banner_area .banner_inner {
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 395px;
-    background: url(../img/breadcrumb/checkout-bg.jpg) no-repeat center bottom;
+    min-height: 320px;
+    background: url(../img/breadcrumb/bamboo-bamboo-whisk-board-bowls-461428.jpg) no-repeat center bottom;
     background-size: contain;
     z-index: 1; }
     .banner_area .banner_inner .overlay {
@@ -3494,8 +3494,8 @@ h6 {
 /* Cart Area css
 ============================================================================================ */
 .cart_area {
-  padding-top: 100px;
-  padding-bottom: 100px; }
+  padding-top: 50px;
+  padding-bottom: 50px; }
 
 .cart_inner .table thead tr th {
   border-top: 0px;
