@@ -16,7 +16,6 @@ use DB;
 use App\Mail\CustomerRegisterMail;
 use Mail;
 use Cookie;
-use GuzzleHttp\Client;
 
 class CartController extends Controller
 {
@@ -108,8 +107,7 @@ class CartController extends Controller
             'customer_address' => 'required|string',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
-            'district_id' => 'required|exists:districts,id',
-            'courier' => 'required'
+            'district_id' => 'required|exists:districts,id'
         ]);
 
         DB::beginTransaction();
@@ -142,7 +140,6 @@ class CartController extends Controller
                 ]);
             }
 
-            $shipping = explode('-', $request->courier); 
             $order = Order::create([
                 'invoice' => Str::random(4) . '-' . time(),
                 'customer_id' => $customer->id,
@@ -150,9 +147,7 @@ class CartController extends Controller
                 'customer_phone' => $request->customer_phone,
                 'customer_address' => $request->customer_address,
                 'district_id' => $request->district_id,
-                'subtotal' => $subtotal,
-                'cost' => $shipping[2],
-                'shipping' => $shipping[0] . '-' . $shipping[1]
+                'subtotal' => $subtotal
             ]);
 
             foreach ($carts as $row) {
@@ -186,32 +181,5 @@ class CartController extends Controller
     {
         $order = Order::with(['district.city'])->where('invoice', $invoice)->first();
         return view('ecommerce.checkout_finish', compact('order'));
-    }
-
-    public function getCourier(Request $request)
-    {
-        $this->validate($request, [
-            'destination' => 'required',
-            'weight' => 'required|integer'
-        ]);
-
-        //MENGIRIM PERMINTAAN KE API RUANGAPI UNTUK MENGAMBIL DATA ONGKOS KIRIM
-        //BACA DOKUMENTASI UNTUK PENJELASAN LEBIH LANJUT
-        $url = 'https://ruangapi.com/api/v1/shipping';
-        $client = new Client();
-        $response = $client->request('POST', $url, [
-            'headers' => [
-                'Authorization' => 'LCVuhHNnSGUF8D10m2dBephXDA2S6DOR5xWz7b7v'
-            ],
-            'form_params' => [
-                'origin' => 3, //ASAL PENGIRIMAN, 3 = Tangerang
-                'destination' => $request->destination,
-                'weight' => $request->weight,
-                'courier' => 'jne,jnt' //MASUKKAN KEY KURIR LAINNYA JIKA INGIN MENDAPATKAN DATA ONGKIR DARI KURIR YANG LAIN
-            ]
-        ]);
-
-        $body = json_decode($response->getBody(), true);
-        return $body;
     }
 }
