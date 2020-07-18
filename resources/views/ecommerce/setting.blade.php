@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Pengaturan </title>
+    <title>Pengaturan</title>
 @endsection
 
 @section('content')

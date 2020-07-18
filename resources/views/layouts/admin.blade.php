@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-  
     @yield('title')
 
   <!-- UNTUK ME-LOAD ASSET DARI PUBLIC, KITA GUNAKAN HELPER ASSET() -->
@@ -31,7 +30,16 @@
       
     </div>
 
-
+    <footer class="app-footer">
+        <div>
+            <a>Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a></a>
+           
+        </div>
+        <div class="ml-auto">
+            <span>Powered by</span>
+            <a href="https://coreui.io">CoreUI</a>
+        </div>
+    </footer>
     
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/popper.min.js') }}"></script>

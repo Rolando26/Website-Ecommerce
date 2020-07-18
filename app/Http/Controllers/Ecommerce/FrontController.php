@@ -19,7 +19,11 @@ class FrontController extends Controller
 
     public function product()
     {
-        $products = Product::orderBy('created_at', 'DESC')->paginate(12);
+        $products = Product::orderBy('created_at', 'DESC');
+        if (request()->q != '') {
+            $products = $products->where('name', 'LIKE', '%' . request()->q . '%');
+        }
+        $products = $products->paginate(12);
         return view('ecommerce.product', compact('products'));
     }
 
