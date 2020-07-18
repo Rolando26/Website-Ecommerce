@@ -4,7 +4,7 @@
 
     <title>Jual Produk</title>
 
-    <title>Jual Produk Fashion</title>
+   
 
 @endsection
 

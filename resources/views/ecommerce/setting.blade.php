@@ -4,7 +4,6 @@
 
     <title>Pengaturan</title>
 
-    <title>Pengaturan </title>
 
 @endsection
 
