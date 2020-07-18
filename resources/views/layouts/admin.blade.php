@@ -32,8 +32,11 @@
 
     <footer class="app-footer">
         <div>
+
             <a>Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a></a>
            
+
+          
         </div>
         <div class="ml-auto">
             <span>Powered by</span>

@@ -1,7 +1,11 @@
 @extends('layouts.ecommerce')
 
 @section('title')
+
     <title>Jual Produk</title>
+
+    <title>Jual Produk Fashion</title>
+
 @endsection
 
 @section('content')
