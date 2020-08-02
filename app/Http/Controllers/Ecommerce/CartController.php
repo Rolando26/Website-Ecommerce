@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 use DB;
 use App\Mail\CustomerRegisterMail;
 use Mail;
+use GuzzleHttp\Client;
 use Cookie;
 
 class CartController extends Controller
@@ -107,7 +108,8 @@ class CartController extends Controller
             'customer_address' => 'required|string',
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
-            'district_id' => 'required|exists:districts,id'
+            'district_id' => 'required|exists:districts,id',
+            'courier' => 'required' //TAMBAHKAN VALIDASI KURIR
         ]);
 
         DB::beginTransaction();
@@ -140,6 +142,7 @@ class CartController extends Controller
                 ]);
             }
 
+            $shipping = explode('-', $request->courier); //EXPLODE DATA KURIR, KARENA FORMATNYA, NAMAKURIR-SERVICE-COST
             $order = Order::create([
                 'invoice' => Str::random(4) . '-' . time(),
                 'customer_id' => $customer->id,
@@ -147,7 +150,9 @@ class CartController extends Controller
                 'customer_phone' => $request->customer_phone,
                 'customer_address' => $request->customer_address,
                 'district_id' => $request->district_id,
-                'subtotal' => $subtotal
+                'subtotal' => $subtotal,
+                'cost' => $shipping[2], //SIMPAN INFORMASI BIAYA ONGKIRNYA PADA INDEX 2
+                'shipping' => $shipping[0] . '-' . $shipping[1], //SIMPAN NAMA KURIR DAN SERVICE YANG DIGUNAKAN
             ]);
 
             foreach ($carts as $row) {
@@ -182,4 +187,33 @@ class CartController extends Controller
         $order = Order::with(['district.city'])->where('invoice', $invoice)->first();
         return view('ecommerce.checkout_finish', compact('order'));
     }
+
+    public function getCourier(Request $request)
+    {   
+        $this->validate($request, [
+            'destination' => 'required',
+            'weight' => 'required|integer'
+        ]);
+
+        //MENGIRIM PERMINTAAN KE API RUANGAPI UNTUK MENGAMBIL DATA ONGKOS KIRIM
+        //BACA DOKUMENTASI UNTUK PENJELASAN LEBIH LANJUT
+        $url = 'https://ruangapi.com/api/v1/shipping';
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+            'headers' => [
+                'Authorization' => 'IxBzgm0j7xWjgYqtYvuaDWXl4ufUFwIa1LFB4Yht'
+            ],
+            'form_params' => [
+                'origin' => 22, //ASAL PENGIRIMAN, 22 = BANDUNG
+                'destination' => $request->destination,
+                'weight' => $request->weight,
+                'courier' => 'jnt' //MASUKKAN KEY KURIR LAINNYA JIKA INGIN MENDAPATKAN DATA ONGKIR DARI KURIR YANG LAIN
+            ]
+        ]);
+
+        $body = json_decode($response->getBody(), true);
+        return $body;
+    }
+
+
 }

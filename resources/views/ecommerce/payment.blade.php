@@ -39,7 +39,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Konfirmasi Pembayaran</h4>
                 </div>
-<div class="card-body">
+            <div class="card-body">
                     <form action="{{ route('customer.savePayment') }}" enctype="multipart/form-data" method="post">
                         @csrf
 

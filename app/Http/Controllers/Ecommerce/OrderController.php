@@ -51,7 +51,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $order = Order::where('invoice', $request->invoice)->first();
-            if ($order->subtotal != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
+        if ($order->total != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
             if ($order->status == 0 && $request->hasFile('proof')) {
                 $file = $request->file('proof');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
