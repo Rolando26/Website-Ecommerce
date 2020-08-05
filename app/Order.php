@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     protected $guarded = [];
-    protected $appends = ['status_label','total'];
+    protected $appends = ['status_label', 'total'];
     
     //MEMBUAT RELASI KE MODEL DISTRICT.PHP
     public function district()
@@ -29,10 +29,6 @@ class Order extends Model
         return '<span class="badge badge-success">Selesai</span>';
     }
 
-         public function getTotalAttribute()
-        {
-            return $this->subtotal + $this->cost;
-        }
     public function details()
     {
         return $this->hasMany(OrderDetail::class);
@@ -51,5 +47,10 @@ class Order extends Model
     public function return()
     {
         return $this->hasOne(OrderReturn::class);
+    }
+
+    public function getTotalAttribute()
+    {
+        return $this->subtotal + $this->cost;
     }
 }

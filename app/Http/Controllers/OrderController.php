@@ -47,8 +47,9 @@ class OrderController extends Controller
 
     public function view($invoice)
     {
+        $kurir = Order::all();
         $order = Order::with(['customer.district.city.province', 'payment', 'details.product'])->where('invoice', $invoice)->first();
-        return view('orders.view', compact('order'));
+        return view('orders.view', compact('order', 'kurir'));
     }
 
     public function acceptPayment($invoice)

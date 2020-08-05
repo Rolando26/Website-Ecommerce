@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Keranjang Belanja</title>
+    <title>Keranjang Belanja - Dw Ecommerce</title>
 @endsection
 
 @section('content')
@@ -40,19 +40,14 @@
 							</li>
 							<li>
 								<a href="#">
-									<span>Subtotal</span> : Rp {{ number_format($order->subtotal) }}
-								</a>
-								</li>
-								<li>
-								<a href="#">
 									<span>Ongkos Kirim</span> : Rp {{ number_format($order->cost) }}
 								</a>
-								</li>
-								<li>
+							</li>
+							<li>
 								<a href="#">
 									<span>Total</span> : Rp {{ number_format($order->total) }}
 								</a>
-								</li>
+							</li>
 						</ul>
 					</div>
 				</div>

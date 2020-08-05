@@ -1,11 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-
-    <title>Jual Produk</title>
-
-   
-
+    <title>Jual Produk Fashion - DW Ecommerce</title>
 @endsection
 
 @section('content')
@@ -32,16 +28,7 @@
                 <div class="col-lg-9">
                     <div class="product_top_bar">
                         <div class="left_dorp">
-                            <select class="sorting">
-                                <option value="1">Default sorting</option>
-                                <option value="2">Default sorting 01</option>
-                                <option value="4">Default sorting 02</option>
-                            </select>
-                            <select class="show">
-                                <option value="1">Show 12</option>
-                                <option value="2">Show 14</option>
-                                <option value="4">Show 16</option>
-                            </select>
+                        <p>Menjual berbagai Roti dan Makanan - Makanan Beku Dengan Harga Terjangkau</p>
                         </div>
                         <div class="right_page ml-auto">
                             {{ $products->links() }}
@@ -110,9 +97,6 @@
                 </div>
 
           	<!-- GENERATE PAGINATION PRODUK -->
-            <div class="row">
-                {{ $products->links() }}
-            </div>
         </div>
     </section>
     <!--================End Category Product Area =================-->

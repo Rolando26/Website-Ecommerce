@@ -42,7 +42,7 @@
 		<div class="top_menu row m0 bg-light">
 			<div class="container-fluid">
 				<div class="float-left">
-					<p>Call Us: +62 822-9999-7466</p>
+					<p>Call Us: 012 44 5698 7456 896</p>
 				</div>
 				<div class="float-right">
 				<ul class="right_side">
@@ -52,7 +52,7 @@
 						<li><a href="{{ route('customer.login') }}">Login</a></li>
 					@endif
 					<li><a href="{{ route('customer.dashboard') }}">My Account</a></li>
-					<li><a href="https://api.whatsapp.com/send?phone=6282299997466&text=Hallo%20Saya%20Ingin%20....">Contact Us</a></li>
+					<li><a href="https://api.whatsapp.com/send?phone=6281282498758&text=Hallo%20Saya%20Ingin%20....">Contact Us</a></li>
 				</ul>
 				</div>
 			</div>
@@ -125,7 +125,7 @@
 							<a href="https://www.instagram.com/mantou_adut/?hl=id">
 								<i class="fa fa-instagram"></i>
 							</a>
-							<a href="https://api.whatsapp.com/send?phone=6282299997466&text=Hallo%20Saya%20Ingin%20....">
+							<a href="https://api.whatsapp.com/send?phone=6281282498758&text=Hallo%20Saya%20Ingin%20....">
 								<i class="fa fa-whatsapp"></i>
 							</a>
 						</div>
@@ -134,11 +134,7 @@
 			</div>
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
 				<p class="col-lg-12 footer-text text-center">
-
-                    Made with 
-
-        
-
+                    made with 
                     <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
 				</p>
 			</div>

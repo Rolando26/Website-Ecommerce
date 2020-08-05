@@ -30,11 +30,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $orders = Order::where("status","4")->count();
+        $new =  Order::where("status","0")->count();
+        $confirm =  Order::where("status","1")->count();
+        $process = Order::where("status","2")->count();
+        $shipping =  Order::where("status","3")->count();
+        $done = Order::where("status","4")->count();
+        $subtotal = Order::sum('subtotal');
         $total = Order::sum('subtotal') + Order::sum('cost');
-        $jjk =  Order::where("status","3")->count();
         $customers = Customer::all()->count();
-        return view('home', compact('orders', 'customers', 'jjk', 'total'));
+        return view('home', compact('new', 'confirm', 'process', 'shipping', 'done', 'customers', 'total', 'subtotal'));
     }
 
     public function orderReport()

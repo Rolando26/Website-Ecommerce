@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Order {{ $order->invoice }}</title>
+    <title>Order {{ $order->invoice }} - DW Ecommerce</title>
 @endsection
 
 @section('content')
@@ -133,6 +133,30 @@
                                           <td>{{ number_format($row->price) }}</td>
                                           <td>{{ $row->qty }} Item</td>
                                           <td>{{ $row->weight }} gr</td>
+                                      </tr>
+                                      @empty
+                                      <tr>
+                                          <td colspan="4" class="text-center">Tidak ada data</td>
+                                      </tr>
+                                      @endforelse
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="table-responsive">
+                              <table class="table table-bordered table-hover">
+                                  <thead>
+                                      <tr>
+                                          <th>Jasa Pengiriman</th>
+                                          <th>Harga</th>
+                                          <th>Total Pembayaran</th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      @forelse ($kurir as $riw)
+                                      <tr>
+                                          <td>{{ $riw->shipping }}</td>
+                                          <td>{{ number_format($riw->cost) }}</td>
+                                          <td>{{ number_format($riw->total) }}</td>
                                       </tr>
                                       @empty
                                       <tr>

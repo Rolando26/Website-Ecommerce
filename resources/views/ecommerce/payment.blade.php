@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Konfirmasi Pembayaran</title>
+    <title>Konfirmasi Pembayaran - DW Ecommerce</title>
 @endsection
 
 @section('css')
@@ -39,7 +39,7 @@
                 <div class="card-header">
                     <h4 class="card-title">Konfirmasi Pembayaran</h4>
                 </div>
-            <div class="card-body">
+<div class="card-body">
                     <form action="{{ route('customer.savePayment') }}" enctype="multipart/form-data" method="post">
                         @csrf
 
@@ -64,10 +64,10 @@
                             <label for="">Transfer Ke</label>
                             <select name="transfer_to" class="form-control" required>
                                 <option value="">Pilih</option>
-                                <option value="BCA - 1234567">BCA: 1234567 </option>
-                                <option value="Mandiri - 2345678">Mandiri: 2345678 </option>
-                                <option value="BRI - 9876543">BCA: 9876543 </option>
-                                <option value="BNI - 6789456">BCA: 6789456 </option>
+                                <option value="BCA - 1234567">BCA: 1234567 a.n Anugrah Sandi</option>
+                                <option value="Mandiri - 2345678">Mandiri: 2345678 a.n Anugrah Sandi</option>
+                                <option value="BRI - 9876543">BCA: 9876543 a.n Anugrah Sandi</option>
+                                <option value="BNI - 6789456">BCA: 6789456 a.n Anugrah Sandi</option>
                             </select>
                             <p class="text-danger">{{ $errors->first('transfer_to') }}</p>
                         </div>

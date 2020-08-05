@@ -13,7 +13,7 @@ class FrontController extends Controller
 {
     public function index()
     {
-        $products = Product::orderBy('created_at', 'DESC')->paginate(10);
+        $products = Product::orderBy('created_at', 'DESC')->paginate(5);
         return view('ecommerce.index', compact('products'));
     }
 
@@ -23,7 +23,7 @@ class FrontController extends Controller
         if (request()->q != '') {
             $products = $products->where('name', 'LIKE', '%' . request()->q . '%');
         }
-        $products = $products->paginate(12);
+        $products = $products->paginate(8);
         return view('ecommerce.product', compact('products'));
     }
 
