@@ -32,7 +32,7 @@ Route::group(['prefix' => 'administrator', 'middleware' => 'auth'], function() {
         Route::post('/shipping', 'OrderController@shippingOrder')->name('orders.shipping');
         Route::get('/return/{invoice}', 'OrderController@return')->name('orders.return');
         Route::post('/return', 'OrderController@approveReturn')->name('orders.approve_return');
-        //SEMUA ROUTE BARU SEPANJANG ARTIKEL INI AKAN DISIMPAN DI DALAM BLOCK CODE INI
+ 
     });
     Route::group(['prefix' => 'reports'], function() {
         Route::get('/order', 'HomeController@orderReport')->name('report.order');

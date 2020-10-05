@@ -62,7 +62,7 @@
 				<div class="container-fluid">
 					<!-- Brand and toggle get grouped for better mobile display -->
                     <a class="navbar-brand logo_h" href="{{ route('front.index') }}">
-						<img src="{{ asset('assets/img/Artboard 1.png') }}" alt="" width="65%" height="65%">
+						<img src="{{ asset('assets/img/mantou_asli.png') }}" alt="" width="70px" height="70px" style="margin-left:-30px;margin-right:30px;">
 					</a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 					 aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +108,7 @@
 				<div class="col-lg-9  col-md-4 col-sm-4">
 					<div class="single-footer-widget">
 						<h6 class="footer_title">About Us</h6>
-						Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.<br>pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.<br>pemesanan yang Frozen bisa melalui smua ekspedisi yg tersedia
+						Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.<br>pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.<br>pemesanan yang Frozen bisa melalui smua ekspedisi yang tersedia
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
