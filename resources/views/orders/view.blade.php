@@ -120,7 +120,7 @@
                                             <td>{{ $row->qty }}</td>
                                             <td>Rp {{ number_format($row->price) }}</td>
                                             <td>{{ $row->weight }} gr</td>
-                                            <td>Rp {{ $row->qty * $row->price }}</td>
+                                            <td>Rp {{ number_format($row->qty * $row->price) }}</td>
                                         </tr>
                                         @endforeach
                                     </table>

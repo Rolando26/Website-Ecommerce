@@ -23,10 +23,11 @@ class OrderController extends Controller
 
     public function view($invoice)
     {
+        $kurir = Order::all();
         $order = Order::with(['district.city.province', 'details', 'details.product', 'payment'])
         ->where('invoice', $invoice)->first();
-        if (\Gate::forUser(auth()->guard('customer')->user())->allows('order-view', $order)) {
-            return view('ecommerce.orders.view', compact('order'));
+        if (\Gate::forUser(auth()->guard('customer')->user())->allows('order-view', $order, $kurir)) {
+            return view('ecommerce.orders.view', compact('order', 'kurir'));
         }
         return redirect(route('customer.orders'))->with(['error' => 'Anda Tidak Diizinkan Untuk Mengakses Order Orang Lain']);
     }
@@ -51,7 +52,7 @@ class OrderController extends Controller
         DB::beginTransaction();
         try {
             $order = Order::where('invoice', $request->invoice)->first();
-        if ($order->total != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
+            if ($order->total != $request->amount) return redirect()->back()->with(['error' => 'Error, Pembayaran Harus Sama Dengan Tagihan']);
             if ($order->status == 0 && $request->hasFile('proof')) {
                 $file = $request->file('proof');
                 $filename = time() . '.' . $file->getClientOriginalExtension();

@@ -15,8 +15,8 @@ use Illuminate\Support\Str;
 use DB;
 use App\Mail\CustomerRegisterMail;
 use Mail;
-use GuzzleHttp\Client;
 use Cookie;
+use GuzzleHttp\Client;
 
 class CartController extends Controller
 {
@@ -109,7 +109,7 @@ class CartController extends Controller
             'province_id' => 'required|exists:provinces,id',
             'city_id' => 'required|exists:cities,id',
             'district_id' => 'required|exists:districts,id',
-            'courier' => 'required' //TAMBAHKAN VALIDASI KURIR
+            'courier' => 'required'
         ]);
 
         DB::beginTransaction();
@@ -142,7 +142,7 @@ class CartController extends Controller
                 ]);
             }
 
-            $shipping = explode('-', $request->courier); //EXPLODE DATA KURIR, KARENA FORMATNYA, NAMAKURIR-SERVICE-COST
+            $shipping = explode('-', $request->courier); 
             $order = Order::create([
                 'invoice' => Str::random(4) . '-' . time(),
                 'customer_id' => $customer->id,
@@ -151,8 +151,8 @@ class CartController extends Controller
                 'customer_address' => $request->customer_address,
                 'district_id' => $request->district_id,
                 'subtotal' => $subtotal,
-                'cost' => $shipping[2], //SIMPAN INFORMASI BIAYA ONGKIRNYA PADA INDEX 2
-                'shipping' => $shipping[0] . '-' . $shipping[1], //SIMPAN NAMA KURIR DAN SERVICE YANG DIGUNAKAN
+                'cost' => $shipping[2],
+                'shipping' => $shipping[0] . '-' . $shipping[1]
             ]);
 
             foreach ($carts as $row) {
@@ -189,7 +189,7 @@ class CartController extends Controller
     }
 
     public function getCourier(Request $request)
-    {   
+    {
         $this->validate($request, [
             'destination' => 'required',
             'weight' => 'required|integer'
@@ -201,7 +201,7 @@ class CartController extends Controller
         $client = new Client();
         $response = $client->request('POST', $url, [
             'headers' => [
-                'Authorization' => 'IxBzgm0j7xWjgYqtYvuaDWXl4ufUFwIa1LFB4Yht'
+                'Authorization' => 'LCVuhHNnSGUF8D10m2dBephXDA2S6DOR5xWz7b7v'
             ],
             'form_params' => [
                 'origin' => 22, //ASAL PENGIRIMAN, 22 = BANDUNG
@@ -214,6 +214,4 @@ class CartController extends Controller
         $body = json_decode($response->getBody(), true);
         return $body;
     }
-
-
 }

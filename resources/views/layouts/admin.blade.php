@@ -4,6 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+	<meta name="description" content="Daengweb - Aplikasi Ecommerce">
+	<meta name="author" content="Daengweb">
+  <meta name="keyword" content="aplikasi ecommerce laravel, tutorial laravel basic, belajar laravel, panduan belajar laravel">
     @yield('title')
 
   <!-- UNTUK ME-LOAD ASSET DARI PUBLIC, KITA GUNAKAN HELPER ASSET() -->
@@ -32,11 +35,8 @@
 
     <footer class="app-footer">
         <div>
-
-            <a>Made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a></a>
-           
-
-          
+            <a href="https://coreui.io">Daengweb</a>
+            <span>&copy; 2018 creativeLabs.</span>
         </div>
         <div class="ml-auto">
             <span>Powered by</span>
