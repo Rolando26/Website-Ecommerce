@@ -108,7 +108,7 @@
 				<div class="col-lg-9  col-md-4 col-sm-4">
 					<div class="single-footer-widget">
 						<h6 class="footer_title">About Us</h6>
-						Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.<br>pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.<br>pemesanan yang Frozen bisa melalui smua ekspedisi yang tersedia
+						Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.<br>pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.<br>pemesanan yang Frozen bisa melalui semua ekspedisi yang tersedia
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6">
@@ -134,7 +134,7 @@
 			</div>
 			<div class="row footer-bottom d-flex justify-content-between align-items-center">
 				<p class="col-lg-12 footer-text text-center">
-                    made with 
+                    Made with 
                     <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.instagram.com/ardi.hp/" target="_blank">Ardi</a> & <a href="https://www.instagram.com/rola__ndo/" target="_blank">Ando</a>
 				</p>
 			</div>
