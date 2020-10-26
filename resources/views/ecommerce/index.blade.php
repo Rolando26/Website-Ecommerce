@@ -13,7 +13,7 @@
 				<div class="banner_content row">
 					<div class="offset-lg-2 col-lg-8">
 						<h3>Mantou Adut</h3>
-						<p>Menjual mantou dengan berbagai pilihan rasa Vegan dan vegetarian bisa dikukus dan digoreng.pemesanan yang di kukus dan digoreng dikirim pakai gojek atau grab.pemesanan yang Frozen bisa melalui smua ekspedisi yang tersedia</p>
+						<p>Menjual mantou dengan berbagai pilihan rasa vegan dan vegetarian bisa dikukus dan digoreng. Pemesanan yang di kukus dan digoreng dikirim menggunakan gojek atau grab. Pemesanan yang Frozen bisa melalui semua ekspedisi yang tersedia</p>
 						<a class="white_bg_btn" href="{{ route('front.product') }}">Lihat Produk</a>
 					</div>
 				</div>
