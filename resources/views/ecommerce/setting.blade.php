@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Pengaturan - DW Ecommerce</title>
+    <title>Pengaturan</title>
 @endsection
 
 @section('content')

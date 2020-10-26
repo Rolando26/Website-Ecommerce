@@ -1,7 +1,7 @@
 @extends('layouts.ecommerce')
 
 @section('title')
-    <title>Konfirmasi Pembayaran - DW Ecommerce</title>
+    <title>Konfirmasi Pembayaran</title>
 @endsection
 
 @section('css')
